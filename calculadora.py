@@ -27,14 +27,26 @@ SPEED_EVOLUTION = {'K1': 48, 'K2': 24, 'K3': 12, 'K4': 12}
 
 st.title('Calculadora de Fichas de Conocimiento para Scouts')
 
-scout_type = st.selectbox("Selecciona el tipo de scout", ["Portero", "Defensor o Mediocampista (CDM)", "Mediocampista de Cobertura", "Delantero o Mediocampista (CAM)"])
+initial_ov = st.number_input('Nivel de habilidad general inicial', min_value=1, value=50)
+
+# Estimamos los valores iniciales de K basados en el OV inicial
+# La lógica para estimar los valores de K puede variar dependiendo de la información adicional que tengas
+estimated_k2_to_k4 = initial_ov / 2
+estimated_k1 = (initial_ov - 0.2 * estimated_k2_to_k4 - 0.05 * estimated_k2_to_k4 - 0.05 * estimated_k2_to_k4) / 0.7
+
+# Asumimos que los valores de K2, K3 y K4 son iguales para simplificar
 current_skills = {
-    'K1': st.number_input('Nivel actual de K1', min_value=1, value=50),
-    'K2': st.number_input('Nivel actual de K2', min_value=1, value=50),
-    'K3': st.number_input('Nivel actual de K3', min_value=1, value=50),
-    'K4': st.number_input('Nivel actual de K4', min_value=1, value=50)
+    'K1': estimated_k1,
+    'K2': estimated_k2_to_k4,
+    'K3': estimated_k2_to_k4,
+    'K4': estimated_k2_to_k4
 }
-target_overall = st.number_input('Nivel de habilidad general objetivo', min_value=1, value=70)
+
+# Mostramos los valores estimados de K
+st.write(f'Estimación de K1: {current_skills["K1"]}')
+st.write(f'Estimación de K2, K3, K4: {current_skills["K2"]}')
+
+target_overall = st.number_input('Nivel de habilidad general objetivo', min_value=initial_ov+1, value=70)
 
 if st.button('Calcular KT y Nivel General'):
     total_kt = {}
