@@ -62,3 +62,7 @@ if st.button('Calcular KT y Overall Knowledge Skill'):
     st.subheader('Nivel de habilidad general con las habilidades objetivo:')
     st.write(f'Overall Knowledge Skill: {overall_knowledge}')
 
+# Agregamos los enlaces al final del script
+st.markdown('Consulta cuáles son los K de tu Scout aquí: [Whitepaper MetaSoccer](https://whitepaper.metasoccer.com/metasoccer/game-assets/youth-scout#knowledge)')
+st.markdown('Calculadora en desarrollo por [elrepre77](https://twitter.com/elrepre77)')
+
