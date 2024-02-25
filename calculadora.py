@@ -29,12 +29,12 @@ st.title('Calculadora de Fichas de Conocimiento para Scouts')
 
 scout_type = st.selectbox("Selecciona el tipo de scout", ["Portero", "Defensor o Mediocampista (CDM)", "Mediocampista de Cobertura", "Delantero o Mediocampista (CAM)"])
 current_skills = {
-    'K1': st.number_input('Nivel actual de K1', min_value=1, value=50),
-    'K2': st.number_input('Nivel actual de K2', min_value=1, value=50),
-    'K3': st.number_input('Nivel actual de K3', min_value=1, value=50),
-    'K4': st.number_input('Nivel actual de K4', min_value=1, value=50)
+    'K1': st.number_input('Nivel actual de K1', value=50),
+    'K2': st.number_input('Nivel actual de K2', value=50),
+    'K3': st.number_input('Nivel actual de K3', value=50),
+    'K4': st.number_input('Nivel actual de K4', value=50)
 }
-target_overall = st.number_input('Nivel de habilidad general objetivo', min_value=1, value=70)
+target_overall = st.number_input('Nivel de habilidad general objetivo', min_value=1, value=80)
 
 if st.button('Calcular KT y Nivel General'):
     total_kt = {}
